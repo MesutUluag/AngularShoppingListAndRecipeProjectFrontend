@@ -2,9 +2,17 @@
 
 1. This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
 
-2. Project uses firebase for backend functionality. This database uses nosql. 
+2. Project uses firebase for backend functionality. Database uses nosql. 
     * If you want to use it with database functionality you should go firebase, create project and create a real-time database.
-    * Base url will be https://recipeandshoppinglistbackend-default-rtdb.firebaseio.com/
+    * Base url will be like https://recipeandshoppinglistbackend-default-rtdb.firebaseio.com/ - you should change base url in accordance with firebase generated url.
+    * Authentication is also uses firebase authentication. You should set your rules as below shown example
+    
+           {
+                "rules": {
+                    ".read": "auth!=null",  
+                    ".write": "auth!=null",
+                }
+           }
 
 ## Development server
 
