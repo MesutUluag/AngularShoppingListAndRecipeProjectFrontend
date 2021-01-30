@@ -1,6 +1,10 @@
 # Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
+1. This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
+
+2. Project uses firebase for backend functionality. This database uses nosql. 
+    * If you want to use it with database functionality you should go firebase, create project and create a real-time database.
+    * Base url will be https://recipeandshoppinglistbackend-default-rtdb.firebaseio.com/
 
 ## Development server
 
