@@ -21,20 +21,17 @@ export class DataStorageService {
   }
 
   fetchRecipes() {
-    return this.authService.user.pipe(take(1), exhaustMap(user => { // take(1) only fetches one time
-        return this.http.get<Recipe[]>('https://recipeandshoppinglistbackend-default-rtdb.firebaseio.com/recipes.json',
-          {// we should add user token as a param
-            params : new HttpParams().set('auth', user.token)
+
+    return this.http.get<Recipe[]>('https://recipeandshoppinglistbackend-default-rtdb.firebaseio.com/recipes.json')
+      .pipe(
+        map(recipes => {
+          return recipes.map(recipe => {
+            return {...recipe, ingredients: recipe.ingredients ? recipe.ingredients : []};
           });
-      }),
-      map(recipes => {
-        return recipes.map(recipe => {
-          return {...recipe, ingredients: recipe.ingredients ? recipe.ingredients : []};
-        });
-      }),
-      tap(recipes => {
-        this.recipeService.setRecipes(recipes);
-      })
-    );
+        }),
+        tap(recipes => {
+          this.recipeService.setRecipes(recipes);
+        })
+      );
   }
 }
