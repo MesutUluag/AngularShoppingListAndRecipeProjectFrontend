@@ -13,6 +13,13 @@
                     ".write": "auth!=null",
                 }
            }
+           
+ 3. Includes Authentication with below shown features:
+    * login and logout features using firebase backend
+    * auto login for refreshing pages
+    * auto logout in accordance with expiration date
+    * auth-guard to prevent unauthenticated users to reach /recipes url
+    * not display some links to the user when unauthenticated mode
 
 ## Development server
 
