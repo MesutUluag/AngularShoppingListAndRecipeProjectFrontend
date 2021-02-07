@@ -1,8 +1,6 @@
-# Project
+# Angular Recipe to Shoppinglist Project
 
-1. This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
-
-2. Project uses firebase for backend functionality. Database uses nosql. 
+1. Project uses firebase for backend functionality. Database uses nosql. 
     * If you want to use it with database functionality you should go firebase, create project and create a real-time database.
     * Base url will be like https://recipeandshoppinglistbackend-default-rtdb.firebaseio.com/ - you should change base url in accordance with firebase generated url.
     * Authentication is also uses firebase authentication. You should set your rules as below shown example
@@ -14,12 +12,17 @@
                 }
            }
            
- 3. Includes Authentication with below shown features:
+2. Includes Authentication with below shown features:
     * login and logout features using firebase backend
     * auto login for refreshing pages
     * auto logout in accordance with expiration date
     * auth-guard to prevent unauthenticated users to reach /recipes url
     * not display some links to the user when unauthenticated mode
+    
+3. Project is hosted by firebase hosting service, you can react from https://recipeandshoppinglistbackend.web.app/ . If you push your changes and deployment file (with ng build --prod) to master branch web-site will be effected automatically.
+
+4. Optimizations for appliacation is also made with splitting modules and routes from app-module and using lazy loading.
+
 
 ## Development server
 
