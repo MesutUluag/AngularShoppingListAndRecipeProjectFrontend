@@ -1,9 +1,10 @@
-import {Injectable} from "@angular/core";
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {catchError, tap} from "rxjs/operators";
-import {BehaviorSubject, Subject, throwError} from "rxjs";
-import {User} from "./user.model";
-import {Router} from "@angular/router";
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {catchError, tap} from 'rxjs/operators';
+import {BehaviorSubject, throwError} from 'rxjs';
+import {User} from './user.model';
+import {Router} from '@angular/router';
+import {environment} from '../../environments/environment';
 
 export interface AuthResponseData {
   kind: string;
@@ -24,10 +25,10 @@ export class AuthService {
   }
 
   signUp(email: string, password: string) {
-    return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyASjmE4N_ihzSIB3Lp-G-5eVDQxwUAnwU4',
+    return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + environment.firebaseAPIKey,
       {
-        email: email,
-        password: password,
+        email,
+        password,
         returnSecureToken: true
       }).pipe(catchError(this.handleError), tap(resData => {
       this.handleAuthentication(resData.email, resData.localId, resData.idToken, +resData.expiresIn);
@@ -35,9 +36,9 @@ export class AuthService {
   }
 
   login(email: string, password: string) {
-    return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyASjmE4N_ihzSIB3Lp-G-5eVDQxwUAnwU4', {
-      email: email,
-      password: password,
+    return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' + environment.firebaseAPIKey, {
+      email,
+      password,
       returnSecureToken: true
     }).pipe(catchError(this.handleError), tap(resData => {
         this.handleAuthentication(resData.email, resData.localId, resData.idToken, +resData.expiresIn);
@@ -76,7 +77,7 @@ export class AuthService {
   autoLogout(expirationDuration: number) {
     this.tokenExpirationTimer = setTimeout(() => {
       this.logout();
-    }, expirationDuration); //set expirationDuration to 2000 for test purpose
+    }, expirationDuration); // set expirationDuration to 2000 for test purpose
   }
 
   private handleAuthentication(email: string, userId: string, token: string, expiresIn: number) {
