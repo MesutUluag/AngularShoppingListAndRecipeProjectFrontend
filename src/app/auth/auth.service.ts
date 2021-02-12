@@ -98,7 +98,7 @@ export class AuthService {
       email: email,
       userId: userId,
       token: token,
-      expirationDate:  expirationDate
+      expirationDate: expirationDate
     }));
     this.autoLogout(expiresIn * 1000);
     localStorage.setItem('userData', JSON.stringify(user));
