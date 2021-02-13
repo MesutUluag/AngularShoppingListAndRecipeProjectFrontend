@@ -28,7 +28,7 @@ export function authReducer(state = initialState, action: AuthActions.AuthAction
         ...state,
         user: null
       };
-    case AuthActions.LOGIN_START:
+    case AuthActions.LOGIN_START: // also uses SIGNUP_START case
     case AuthActions.SIGNUP_START:
       return {
         ...state,
