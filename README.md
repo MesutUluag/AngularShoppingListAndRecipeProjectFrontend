@@ -23,6 +23,8 @@
 
 4. Optimizations for appliacation is also made with splitting modules and routes from app-module and using lazy loading.
 
+5. Ngrx is implemented at refactorAllWithNgRx brach. At that branch i refactored authService, recipeService and shoppingListService using that. Also async side-effects are implemented using ngrx effects.
+
 
 ## Development server
 
