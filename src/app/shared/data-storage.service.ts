@@ -17,9 +17,7 @@ export class DataStorageService {
   storeRecipes() {
     const recipes = this.recipeService.getRecipes();
     // data will be overwritten
-    this.http.put('https://recipeandshoppinglistbackend-default-rtdb.firebaseio.com/recipes.json', recipes).subscribe(response => {
-
-    });
+    this.http.put('https://recipeandshoppinglistbackend-default-rtdb.firebaseio.com/recipes.json', recipes).subscribe(response => {});
   }
 
   fetchRecipes() {
